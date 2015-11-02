@@ -45,6 +45,6 @@ function make_boost()
          variant=release \
          $2 \
          cxxflags="$CXXFLAGS" \
-         cxxflags="$LDFLAGS"
+         ldflags="$LDFLAGS"
     echo ""
 }

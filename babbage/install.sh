@@ -20,7 +20,7 @@ CC=
 CXX=
 CFLAGS=
 CXXFLAGS="-std=c++14"
-LDFLAGS=
+LDFLAGS="-std=c++14"
 make_hwloc "babbage/hwloc/host"
 make_jemalloc "babbage/jemalloc/mic"
 make_boost "babbage/boost/host" toolset=intel
