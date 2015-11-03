@@ -25,7 +25,7 @@ function hpxlua_cmake()
         echo -n "Configuring HPX LUA ($BUILD_TYPE)..."
         $HPX_BASE/bin/hpxcmake $BASE_PATH/source/hpx_script/lua \
             -DHPX_DIR=$HPX_BASE/lib/cmake/HPX \
-            -DLUA_DIR=$BASE_PATH/packages/$PREFIX/lua
+            -DLUA_DIR=$BASE_PATH/packages/$PREFIX/lua &> $TMP_LOG
         if [ $? != 0 ]
         then
             echo "failed"
@@ -49,7 +49,7 @@ function hpxlua_cmake()
     fi
 
     ln -sf $BASE_PATH/packages/$PREFIX/hpxlua/$BUILD_TYPE/xlua \
-        $HPX_BASE/bin/xlua
+        $HPX_BASE/bin/xlua &> /dev/null
     ln -sf $BASE_PATH/packages/$PREFIX/hpxlua/$BUILD_TYPE/hello \
-        $HPX_BASE/bin/xlua_hello
+        $HPX_BASE/bin/xlua_hello &> /dev/null
 }

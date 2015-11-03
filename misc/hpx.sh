@@ -19,14 +19,17 @@ function hpx_cmake()
     mkdir -p $BASE_PATH/packages/$PREFIX/hpx/$BUILD_TYPE
     cd $BASE_PATH/packages/$PREFIX/hpx/$BUILD_TYPE
     TMP_LOG=$BASE_PATH/packages/$PREFIX/hpx/$BUILD_TYPE/$$.log
+    CMAKE_TOOLCHAIN_FILE=
+    if [ x"$TOOLCHAIN_FILE" != x"" ]
+    then
+        CMAKE_TOOLCHAIN_FILE="-DCMAKE_TOOLCHAIN_FILE=$BASE_PATH/source/hpx/cmake/toolchains/$TOOLCHAIN_FILE"
+        CMAKE_BASE="cmake $CMAKE_TOOLCHAIN_FILE"
+    else
+        CMAKE_BASE="cmake"
+    fi
     if [ ! -f cmake_done ]
     then
         echo -n "Configuring HPX ($BUILD_TYPE)..."
-        CMAKE_TOOLCHAIN_FILE=
-        if [ x"$TOOLCHAIN_FILE" != x"" ]
-        then
-            CMAKE_TOOLCHAIN_FILE="-DCMAKE_TOOLCHAIN_FILE=$BASE_PATH/source/hpx/cmake/toolchains/$TOOLCHAIN_FILE"
-        fi
         CMAKE_MPI_CXX_COMPILER=
         if [ x"$MPI_CXX_COMPILER" != x"" ]
         then
@@ -88,11 +91,13 @@ function hpx_cmake()
         echo "done"
     fi
 
-    cat << EOF >> $BASE_PATH/packages/$PREFIX/hpx/$BUILD_TYPE/bin/hpxcmake
+    cat << EOF > $BASE_PATH/packages/$PREFIX/hpx/$BUILD_TYPE/bin/hpxcmake
 #!/bin/bash
-cmake -DCMAKE_CXX_COMPILER=${CXX} \
-    -DCMAKE_C_COMPILER=${CC} \
-    -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
+$CMAKE_BASE \\
+    -DCMAKE_CXX_COMPILER=${CXX} \\
+    -DCMAKE_C_COMPILER=${CC} \\
+    -DCMAKE_BUILD_TYPE=$BUILD_TYPE \\
+    -DHPX_WITH_MALLOC=jemalloc \\
     "\$@"
 EOF
     chmod +x $BASE_PATH/packages/$PREFIX/hpx/$BUILD_TYPE/bin/hpxcmake

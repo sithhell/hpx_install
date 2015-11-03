@@ -21,11 +21,11 @@ CXX=`which icpc`
 CFLAGS="-mmic"
 CXXFLAGS="-std=c++14 -mmic -DBOOST_NO_CXX11_ALLOCATOR"
 LDFLAGS="-mmic"
-make_hwloc "babbage/mic/hwloc" --host=x86_64-k1om-linux
-make_jemalloc "babbage/mic/jemalloc" --host=x86_64-k1om-linux
-make_lua "babbage/mic/lua"
-make_ah "babbage/mic/activeharmony"
-make_boost "babbage/mic/boost" toolset=intel
+#make_hwloc "babbage/mic/hwloc" --host=x86_64-k1om-linux
+#make_jemalloc "babbage/mic/jemalloc" --host=x86_64-k1om-linux
+#make_lua "babbage/mic/lua"
+#make_ah "babbage/mic/activeharmony"
+#make_boost "babbage/mic/boost" toolset=intel
 
 echo ""
 echo "Building HPX Debug version for the XeonPhi"
