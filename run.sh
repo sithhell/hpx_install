@@ -69,6 +69,7 @@ fi
 . $BASE_PATH/misc/lua.sh
 . $BASE_PATH/misc/active_harmony.sh
 . $BASE_PATH/misc/hpx.sh
+. $BASE_PATH/misc/hpxlua.sh
 
 . $HOST_PATH/install.sh
 

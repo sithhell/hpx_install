@@ -5,6 +5,7 @@ prepare_lua
 prepare_ah
 prepare_boost
 prepare_hpx
+prepare_hpxlua
 
 MODULES="cmake/3.0.0 PrgEnv-intel cray-mpich gcc papi tau/2.24.2"
 
@@ -37,6 +38,7 @@ BUILD_TYPE=Debug
 PREFIX="edison"
 TOOLCHAIN_FILE=Cray-Intel.cmake
 hpx_cmake
+hpxlua_cmake
 
 echo ""
 echo "Building HPX Release version for the Compute Nodes"
@@ -44,6 +46,7 @@ BUILD_TYPE=Release
 PREFIX="edison"
 TOOLCHAIN_FILE=Cray-Intel.cmake
 hpx_cmake
+hpxlua_cmake
 
 create_modulefile hpx 0.9.11-debug "${MODULES}" $BASE_PATH/packages/edison/hpx/Debug
 create_modulefile hpx 0.9.11-release "${MODULES}" $BASE_PATH/packages/edison/hpx/Release

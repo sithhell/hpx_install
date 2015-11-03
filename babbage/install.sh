@@ -5,6 +5,7 @@ prepare_lua
 prepare_ah
 prepare_boost
 prepare_hpx
+prepare_hpxlua
 
 MODULES_HOST="cmake intel impi gcc papi/host-5.3.0 tau/2.24.2"
 MODULES_MIC="cmake intel impi gcc papi/mic-5.3.0 tau/2.24.2"
@@ -35,6 +36,7 @@ MPI_CXX_COMPILER=/opt/intel/impi/5.1.1.109/mic/bin/mpicxx
 MPI_C_COMPILER=/opt/intel/impi/5.1.1.109/mic/bin/mpicc
 CXXFLAGS="-std=c++14 -mmic"
 hpx_cmake
+hpxlua_cmake
 
 echo ""
 echo "Building HPX Release version for the XeonPhi"
@@ -45,6 +47,7 @@ MPI_CXX_COMPILER=/opt/intel/impi/5.1.1.109/mic/bin/mpicxx
 MPI_C_COMPILER=/opt/intel/impi/5.1.1.109/mic/bin/mpicc
 CXXFLAGS="-std=c++14 -mmic"
 hpx_cmake
+hpxlua_cmake
 
 
 echo ""
@@ -71,12 +74,14 @@ echo "Building HPX Debug version for the Host"
 BUILD_TYPE=Debug
 PREFIX="babbage/host"
 hpx_cmake
+hpxlua_cmake
 
 echo ""
 echo "Building HPX Release version for the Host"
 BUILD_TYPE=Release
 PREFIX="babbage/host"
 hpx_cmake
+hpxlua_cmake
 
 MODULES="cmake intel impi gcc papi/mic-5.3.0 tau/2.24.2"
 create_modulefile hpx mic-0.9.11-debug "${MODULES}" $BASE_PATH/packages/babbage/mic/hpx/Debug
