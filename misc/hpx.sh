@@ -90,7 +90,7 @@ function hpx_cmake()
 
     cat << EOF >> $BASE_PATH/packages/$PREFIX/hpx/$BUILD_TYPE/bin/hpxcmake
 #!/bin/bash
-cmake -DCMAKE_CXX_COMPILER=${CC} \
+cmake -DCMAKE_CXX_COMPILER=${CXX} \
     -DCMAKE_C_COMPILER=${CC} \
     -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
     "\$@"

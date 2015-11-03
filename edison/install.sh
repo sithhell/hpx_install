@@ -25,8 +25,8 @@ make_hwloc "edison/hwloc"
 make_jemalloc "edison/jemalloc"
 make_lua "edison/lua"
 make_ah "edison/activeharmony"
-CC=
-CXX=
+CC=`which cc`
+CXX=`which CC`
 CFLAGS=
 CXXFLAGS="-std=c++14"
 LDFLAGS=""

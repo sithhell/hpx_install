@@ -16,8 +16,8 @@ MODULEPATH_BAK=$MODULEPATH
 MODULEPATH=/project/projectdirs/xpress/tau2-hpx/modulefiles:$MODULEPATH
 
 load_modules "${MODULES_MIC}"
-CC=icc
-CXX=icpc
+CC=`which icc`
+CXX=`which icpc`
 CFLAGS="-mmic"
 CXXFLAGS="-std=c++14 -mmic -DBOOST_NO_CXX11_ALLOCATOR"
 LDFLAGS="-mmic"
@@ -54,8 +54,8 @@ echo ""
 echo "Building dependencies for the Host"
 
 load_modules "${MODULES_HOST}"
-CC=icc
-CXX=icpc
+CC=`which icc`
+CXX=`which icpc`
 CFLAGS=
 CXXFLAGS="-std=c++14"
 LDFLAGS=""
