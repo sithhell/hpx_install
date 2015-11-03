@@ -93,7 +93,7 @@ function hpx_cmake()
 cmake -DCMAKE_CXX_COMPILER=${CC} \
     -DCMAKE_C_COMPILER=${CC} \
     -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
-    "$@"
+    "\$@"
 EOF
     chmod +x $BASE_PATH/packages/$PREFIX/hpx/$BUILD_TYPE/bin/hpxcmake
 
