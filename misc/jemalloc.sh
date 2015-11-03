@@ -49,7 +49,8 @@ function make_jemalloc()
         echo "done"
     fi
     echo -n "Building jemalloc..."
-    make -j8 build_doc &> $TMP_LOG
+    touch doc/jemalloc.html &> /dev/null
+    touch doc/jemalloc.3 &> /dev/null
     make -j8 &> $TMP_LOG
     if [ $? != 0 ]
     then

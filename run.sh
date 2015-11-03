@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -li
 #
 ###############################################################################
 #
@@ -66,6 +66,9 @@ fi
 . $BASE_PATH/misc/hwloc.sh
 . $BASE_PATH/misc/jemalloc.sh
 . $BASE_PATH/misc/boost.sh
+. $BASE_PATH/misc/lua.sh
+. $BASE_PATH/misc/active_harmony.sh
+. $BASE_PATH/misc/hpx.sh
 
 . $HOST_PATH/install.sh
 

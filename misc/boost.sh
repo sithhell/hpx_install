@@ -26,14 +26,28 @@ function prepare_boost()
 
 function make_boost()
 {
-    mkdir -p $BASE_PATH/source/boost_1_59_0/$1
-    ln -sf $BASE_PATH/source/boost_1_59_0/* $BASE_PATH/source/boost_1_59_0/$1/
-    cd $BASE_PATH/source/boost_1_59_0/$1/
+    mkdir -p $BASE_PATH/packages/$1
+    ln -sf $BASE_PATH/source/boost_1_59_0/* $BASE_PATH/packages/$1/
+    cd $BASE_PATH/packages/$1/
+    TMP_LOG=$BASE_PATH/packages/$1/$$.log
+    echo -n "Bootstrapping boost ..."
     if [ ! -f b2 ]
     then
-        ./bootstrap.sh
+        ./bootstrap.sh &> $TMP_LOG
+        if [ $? != 0 ]
+        then
+            echo "failed"
+            tail -n 100 $TMP_LOG
+            exit 1
+        fi
     fi
-    echo $2
+    echo "done"
+    LINKFLAGS=
+    if [ x"$LDFLAGS" != x"" ]
+    then
+        LINKFLAGS="linkflags=\"$LDFLAGS\""
+    fi
+    echo -n "Building boost ..."
     ./b2 -j8 --without-mpi \
          --withou-python \
          --without-log \
@@ -42,9 +56,23 @@ function make_boost()
          --without-test \
          --without-graph_parallel \
          --without-math \
+         --without-iostreams \
+         --without-context \
+         --without-coroutine \
+         --without-coroutine2 \
+         --without-signals \
+         --without-container \
+         --without-locale \
+         --without-wave \
          variant=release \
          $2 \
          cxxflags="$CXXFLAGS" \
-         ldflags="$LDFLAGS"
-    echo ""
+         $LINKFLAGS &> $TMP_LOG
+    if [ $? != 0 ]
+    then
+        echo "failed"
+        tail -n 100 $TMP_LOG
+        exit 1
+    fi
+    echo "done"
 }
