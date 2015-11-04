@@ -58,6 +58,7 @@ function hpx_cmake()
             -DHPX_WITH_PAPI=On \
             -DHPX_WITH_APEX=On \
             -DHPX_WITH_TAU=On \
+            -DCMAKE_INSTALL_PREFIX=. \
             -DAPEX_WITH_ACTIVEHARMONY=On &> $TMP_LOG
         if [ $? != 0 ]
         then
