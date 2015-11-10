@@ -7,7 +7,7 @@ prepare_boost
 prepare_hpx
 prepare_hpxlua
 
-MODULES="cmake/3.0.0 PrgEnv-intel cray-mpich gcc papi tau/2.24.2"
+MODULES="cmake/3.0.0 PrgEnv-intel cray-mpich gcc papi tau/craycnl-2.25"
 
 echo "Building dependencies for the Compute Nodes"
 

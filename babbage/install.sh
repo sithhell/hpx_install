@@ -7,13 +7,13 @@ prepare_boost
 prepare_hpx
 prepare_hpxlua
 
-MODULES_HOST="cmake intel impi gcc papi/host-5.3.0 tau/2.24.2"
-MODULES_MIC="cmake intel impi gcc papi/mic-5.3.0 tau/2.24.2"
+MODULES_HOST="cmake intel impi gcc papi/host-5.3.0 tau/host-2.25"
+MODULES_MIC="cmake intel impi gcc papi/mic-5.3.0 tau/mic-2.25"
 
 echo "Building dependencies for the XeonPhi"
 
 MODULEPATH_BAK=$MODULEPATH
-MODULEPATH=/project/projectdirs/xpress/tau2-hpx/modulefiles:$MODULEPATH
+MODULEPATH=/project/projectdirs/xpress/tau2-hpx-babbage/modulefiles:$MODULEPATH
 
 load_modules "${MODULES_MIC}"
 CC=`which icc`

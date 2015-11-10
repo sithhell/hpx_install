@@ -9,6 +9,7 @@ function prepare_hpx()
 
     cd $BASE_PATH/source/hpx
     git stash &> /dev/null
+    git checkout release
     git pull --rebase &> /dev/null
     git stash pop &> /dev/null
     cd $BASE_PATH
@@ -40,6 +41,10 @@ function hpx_cmake()
         then
             CMAKE_MPI_C_COMPILER="-DMPI_C_COMPILER=${MPI_C_COMPILER}"
         fi
+        TAU_OPTIONS="-icpc-pthread"
+        if [ $current_host = "edison" ] ; then
+            TAU_OPTIONS="-intel-pthread"
+        fi
         cmake $BASE_PATH/source/hpx \
             -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
             $CMAKE_TOOLCHAIN_FILE \
@@ -53,6 +58,8 @@ function hpx_cmake()
             -DACTIVEHARMONY_ROOT=$BASE_PATH/packages/$PREFIX/activeharmony \
             -DPAPI_ROOT=$PAPI_PATH \
             -DTAU_ROOT=$TAUROOTDIR \
+            -DTAU_ARCH=$TAUARCH \
+            -DTAU_OPTIONS=$TAU_OPTIONS \
             -DHPX_WITH_MALLOC=jemalloc \
             -DHPX_WITH_PARCELPORT_MPI=On \
             -DHPX_WITH_PAPI=On \
