@@ -83,10 +83,10 @@ PREFIX="babbage/host"
 hpx_cmake
 hpxlua_cmake
 
-MODULES="cmake intel impi gcc papi/mic-5.3.0 tau/2.24.2"
+MODULES="cmake intel impi gcc papi/mic-5.3.0 tau/mic-2.25"
 create_modulefile hpx mic-0.9.11-debug "${MODULES}" $BASE_PATH/packages/babbage/mic/hpx/Debug
 create_modulefile hpx mic-0.9.11-release "${MODULES}" $BASE_PATH/packages/babbage/mic/hpx/Release
-MODULES="cmake intel impi gcc papi/host-5.3.0 tau/2.24.2"
+MODULES="cmake intel impi gcc papi/host-5.3.0 tau/host-2.25"
 create_modulefile hpx host-0.9.11-debug "${MODULES}" $BASE_PATH/packages/babbage/host/hpx/Debug
 create_modulefile hpx host-0.9.11-release "${MODULES}" $BASE_PATH/packages/babbage/host/hpx/Release
 

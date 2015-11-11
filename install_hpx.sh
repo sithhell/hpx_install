@@ -165,8 +165,8 @@ if [[ $HOST == "babbage" ]]
 then
     cd $BASE_PATH
     install_hwloc
-    MODULES_HOST="cmake intel impi gcc boost/host-1.57.0 tau/host-2.24.1 papi/host-5.3.0"
-    MODULES_MIC="cmake intel impi gcc boost/mic-1.57.0 tau/mic-2.24.1 papi/mic-5.3.0"
+    MODULES_HOST="cmake intel impi gcc boost/host-1.57.0 tau/host-2.25 papi/host-5.3.0"
+    MODULES_MIC="cmake intel impi gcc boost/mic-1.57.0 tau/mic-2.25 papi/mic-5.3.0"
     build_hpx
 elif [[ $HOST == "edison" ]]
 then
