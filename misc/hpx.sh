@@ -9,9 +9,14 @@ function prepare_hpx()
 
     cd $BASE_PATH/source/hpx
     git stash &> /dev/null
+    #git checkout release
+    #git pull --rebase &> /dev/null
     git checkout release
-    git pull --rebase &> /dev/null
-    git stash pop &> /dev/null
+    git fetch
+    git fetch --tags
+    git pull
+    git checkout -q 0.9.11
+    #git stash pop &> /dev/null
     cd $BASE_PATH
 }
 
