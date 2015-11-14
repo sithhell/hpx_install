@@ -12,7 +12,7 @@ MODULES="cmake/3.0.0 PrgEnv-intel cray-mpich gcc papi tau/craycnl-2.25"
 echo "Building dependencies for the Compute Nodes"
 
 MODULEPATH_BAK=$MODULEPATH
-MODULEPATH=/project/projectdirs/xpress/tau2-hpx-edison/modulefiles:$MODULEPATH
+MODULEPATH=/project/projectdirs/training/SC15/HPX-SC15/tau2-hpx-edison/modulefiles:$MODULEPATH
 
 CC=gcc
 CXX=g++

@@ -13,7 +13,7 @@ MODULES_MIC="cmake intel impi gcc papi/mic-5.3.0 tau/mic-2.25"
 echo "Building dependencies for the XeonPhi"
 
 MODULEPATH_BAK=$MODULEPATH
-MODULEPATH=/project/projectdirs/xpress/tau2-hpx-babbage/modulefiles:$MODULEPATH
+MODULEPATH=/project/projectdirs/training/SC15/HPX-SC15/tau2-hpx-babbage/modulefiles:$MODULEPATH
 
 load_modules "${MODULES_MIC}"
 CC=`which icc`
